@@ -32,9 +32,10 @@ export class FormComponent implements OnInit {
   onImageUpload(event){
     this.dataService.storeImage(event.target.files[0])
       .then((url) => {
-        console.log(url)
-        this.downloadUrl = url;
-        this.formData.controls.imageInput.setValue(url);
+        setTimeout(() => {
+          this.downloadUrl = url;
+          this.formData.controls.imageInput.setValue(url);
+        }, 500)
       })
   }
 }

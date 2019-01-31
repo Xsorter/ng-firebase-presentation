@@ -1,0 +1,41 @@
+.wrapper{
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-size: 24px;
+  color: #691b99;
+  margin: 15px;
+}
+
+h2{
+  font-size: 20px;
+  text-align: center;
+  color: #9b4dcb;
+  margin: 15px;
+}
+
+img{
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.back{
+  position: fixed;
+  top: 200px;
+  background: #37006a;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all ease-out 0.2s;
+}
+
+.back:hover{
+  opacity: 0.5;
+}

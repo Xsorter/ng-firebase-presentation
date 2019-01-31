@@ -1,5 +1,9 @@
+<div class="wrapper">
+  <h1>{{group}}</h1>
+  <h2>{{album}}</h2>
+  <img [src]="imageUrl" alt="">
+</div>
 
-<h1>{{group}}</h1>
-<h2>{{album}}</h2>
-
-<img [src]="imageUrl" alt="">
+<div class="back" (click)="onBack()">
+  Back to form
+</div>

@@ -39,7 +39,8 @@ export class DataService {
         task.snapshot.ref.getDownloadURL(); //for example, we can get url here
       }
     )
-    return task.snapshot.ref.getDownloadURL()
+    return task.snapshot.ref.getDownloadURL();
+  
   }
   
   

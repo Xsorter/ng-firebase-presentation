@@ -2,18 +2,25 @@
 <section class="container">
   <div class="wrapper">
     <form [formGroup]="formData" (ngSubmit)='onStoreData()'>
-      <input name="group" formControlName="group" type="text">
-      <input name="album" formControlName="album" type="text">
-      <input 
-        type="file" 
-        name="image" 
-        (change)="onImageUpload($event)" 
-        formControlName="image"
-        accept="image/*"
-      >
+      <div class="row">
+        <input name="group" placeholder="Artist" formControlName="group" type="text">
+      </div>
+      <div class="row">
+        <input name="album" placeholder="Album" formControlName="album" type="text">
+      </div>
+      <div class="row">
+        <input 
+          type="file" 
+          name="image" 
+          (change)="onImageUpload($event)" 
+          formControlName="image"
+          accept="image/*"
+        >
+        <div class="upload-button">Choose cover image ...</div>
+      </div>
       <input type="hidden" formControlName="imageInput">
       <img *ngIf="downloadUrl !== ''" [src]="downloadUrl" alt="">
-      <button>Save</button>
+      <button class="button-save">Save</button>
     </form>
   </div>
 </section>

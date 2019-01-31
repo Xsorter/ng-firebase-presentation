@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -7,7 +8,7 @@ import { DataService } from '../shared/data.service';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   group: string = '';
   album: string = '';
@@ -22,6 +23,10 @@ export class ViewComponent implements OnInit {
         this.album = snapshotData.album;
         this.imageUrl = snapshotData.imageInput;
       })
+  }
+
+  onBack(){
+    this.router.navigate(['']);
   }
 
 }
