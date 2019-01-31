@@ -17,6 +17,8 @@
           accept="image/*"
         >
         <div class="upload-button">Choose cover image ...</div>
+        <progress *ngIf="progress" value="{{progress}}" max="100"></progress>
+        
       </div>
       <input type="hidden" formControlName="imageInput">
       <img *ngIf="downloadUrl !== ''" [src]="downloadUrl" alt="">

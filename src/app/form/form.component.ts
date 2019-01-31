@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
 
   formData: FormGroup;
   public downloadUrl:string = '';
+  public progress = null;
 
   ngOnInit() {
     this.formData = new FormGroup({
@@ -30,12 +31,25 @@ export class FormComponent implements OnInit {
   }
 
   onImageUpload(event){
-    this.dataService.storeImage(event.target.files[0])
-      .then((url) => {
-        setTimeout(() => {
-          this.downloadUrl = url;
-          this.formData.controls.imageInput.setValue(url);
-        }, 500)
-      })
+    let task = this.dataService.storeImage(event.target.files[0]);
+    task
+      .on('state_changed', 
+      () => {
+        let progress = Math.floor(((task.snapshot.bytesTransferred/task.snapshot.totalBytes) * 100) * 100) / 100;
+        console.log('img uploaded for '+progress+'%');
+        this.progress = progress;
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.dataService.storeImage(event.target.files[0])
+          .snapshot.ref.getDownloadURL()
+          .then((url) => {
+            this.downloadUrl = url;
+            this.formData.controls.imageInput.setValue(url)
+          })
+      }
+    )
   }
 }

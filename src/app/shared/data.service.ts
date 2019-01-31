@@ -14,6 +14,7 @@ export class DataService {
     firebase.initializeApp(environment.firebase);
   }
 
+
   storeData(value){
     const db = firebase.database();
     db.ref('data').set(value);
@@ -26,20 +27,9 @@ export class DataService {
 
   storeImage(image){
     const storageRef = firebase.storage().ref('images').child(image.name);
-    const task = storageRef.put(image);
-    task.on(firebase.storage.TaskEvent.STATE_CHANGED, 
-      () => {
-        let progress = Math.floor(((task.snapshot.bytesTransferred/task.snapshot.totalBytes) * 100) * 100) / 100;
-        console.log('img uploaded for '+progress+'%');
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        task.snapshot.ref.getDownloadURL(); //for example, we can get url here
-      }
-    )
-    return task.snapshot.ref.getDownloadURL();
+    return storageRef.put(image);
+    
+    //return task.snapshot.ref.getDownloadURL();
   
   }
   
