@@ -11,6 +11,7 @@ export class ViewComponent implements OnInit {
 
   group: string = '';
   album: string = '';
+  imageUrl: string = '';
 
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class ViewComponent implements OnInit {
         const snapshotData = snapshot.val();
         this.group = snapshotData.group;
         this.album = snapshotData.album;
+        this.imageUrl = snapshotData.imageInput;
       })
   }
 
